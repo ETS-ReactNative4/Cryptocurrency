@@ -1,0 +1,26 @@
+mutation {
+  first: createPost(data: {
+    title: "Hello World"
+    text: "This is my first blog post ever!"
+  }) {
+    id
+  }
+
+  second: createPost(data: {
+    title: "My Second Post"
+    text: "My first post was good, but this one is better!"
+  }) {
+    id
+  }
+
+  third: createCoin(data: {
+    name: "Morpheus Network"
+    imageURL: "https://pbs.twimg.com/profile_images/947738702700191744/AqwlC_ON_400x400.jpg"
+    text: "Morpheus Networkは、企業や個人の複雑な国際的な輸送に必要な物流を簡素化し、自動化します。"
+    startAt: "18-02-23"
+    finishAt: "18-04-11"
+  }) {
+    id
+  }
+
+}

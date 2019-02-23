@@ -1,0 +1,71 @@
+enum CoinCategory {
+  UPCOMING,
+  ONGOING,
+  SUCCEEDED,
+  FAILED
+}
+type Post {
+  id: ID! @unique
+  imageURL: String
+  title: String!
+  text: String
+  tags: [PostTag!]!   @relation(name: "TagName")
+  category: PostCategory @relation(name: "CategoryName")
+  updateAt: DateTime
+  createdAt: DateTime!
+  weblink: String
+  source: String
+}
+type PostTag {
+  id: ID! @unique
+  name: String!
+  post: Post@relation(name: "TagPost")
+}
+type PostCategory {
+  id: ID! @unique
+  post: [Post!]! @relation(name: "CategoryName")
+  title: String!
+}
+type Coin {
+  id: ID! @unique
+  imageURL: String
+  name: String!
+  text: String
+  tag: CoinTag @relation(name: "CoinName")
+  startAt: DateTime!
+  finishAt: DateTime!
+
+  symbol: String
+  initialPrice: String
+  tokenSupply: String
+
+  platform: String
+  type: String
+  whitelist: String
+  supplyRatio: String
+  Accepting: String
+  listedOn: String
+  homepage: String
+  whitePaper: String
+}
+
+type CoinTag {
+  id: ID! @unique
+  name: String!
+  coin: [Coin!]! @relation(name: "CoinName")
+}
+type Chat {
+  id: ID! @unique
+  imageURL: String
+  title: String!
+  message: Message @relation(name: "ChatName")
+}
+
+type Message {
+  id: ID! @unique
+  user: String!
+  text: String!
+  chat: Chat @relation(name: "ChatName")
+  createdAt: DateTime!
+  updateAt: DateTime
+}

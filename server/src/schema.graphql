@@ -1,0 +1,47 @@
+# import Post from "./generated/prisma.graphql"
+type Query {
+  post(id: ID!): Post
+  posts: [Post!]!
+
+  postCategory(id: ID!): PostCategory
+  postCategories: [PostCategory!]!
+
+  postTag(id: ID!): PostTag
+  postTags: [PostTag!]!
+
+  coin(id: ID!): Coin
+  coins: [Coin!]!
+
+  coinTag(id: ID!): CoinTag
+  coinTags: [CoinTag!]!
+}
+
+type Mutation {
+  createPost(title: String!, category: PostCategoryCreateOneWithoutPostInput!): Post
+  updatePost(id: ID!, title: String!, updateAt: DateTime ,category: PostCategoryCreateOneWithoutPostInput!): Post
+  deletePost(id: ID!): Post
+
+  createPostCategory(title: String!): PostCategory
+  updatePostCategory(id: ID!, title: String!): PostCategory
+  deletePostCategory(id: ID!): PostCategory
+
+  createPostTag(name: String!): PostTag
+  updatePostTag(id: ID!, name: String!): PostTag
+  deletePostTag(id: ID!): PostTag
+
+  createCoin( name: String!  startAt: String!  finishAt: String!  symbol: String!): Coin
+  updateCoin( name: String!  startAt: String!  finishAt: String!  symbol: String!): Coin
+  deleteCoin( id: ID!): Coin
+
+  createCoinTag( name: String!  ): CoinTag
+  updateCoinTag( name: String!  ): CoinTag
+  deleteCoinTag( id: ID!): CoinTag
+
+  createChat( imageURL: String title: String!): Chat
+  updateChat( imageURL: String title: String!): Chat
+  deleteChat( id: ID!): Chat
+
+  createMessage( user: String!  text: String!  createdAt:DateTime!  updateAt:DateTime): Message
+  updateMessage( user: String!  text: String!  createdAt:DateTime!  updateAt:DateTime): Message
+  deleteMessage( id: ID!): Message
+}
